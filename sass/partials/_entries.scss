@@ -49,9 +49,18 @@ main section {
     grid-column: 1/5;
   }
 
-  button {
+  & > input[type="checkbox"] {
+    display: none;
+
+    &:checked + label {
+      background-color: #97CC04;
+    }
+  }
+
+  button, label.button {
     margin: -2.5rem 2rem;
   }
+
   .edit {
     grid-column: 4/5;
   }

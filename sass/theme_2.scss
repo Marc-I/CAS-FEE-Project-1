@@ -3,7 +3,7 @@ body {
 background-color: #FCDE9C;
 }
 
-button, span.select {
+button, span.select, label.button {
   background-color: #F18805;
 }
 
@@ -13,4 +13,27 @@ header, footer {
 
 nav {
   background-color: #A6A6A8;
+}
+
+
+
+
+
+
+.material.inputgroup input:focus ~ label, .material.inputgroup input:valid ~ label, .material.inputgroup textarea:focus ~ label, .material.inputgroup textarea:valid ~ label {
+  color: #F18805
+}
+
+.material.inputgroup .bar:after, .material.inputgroup .bar:before {
+  background: #F18805;
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #F18805
+  }
+  to {
+    width: 0;
+    background: 0 0
+  }
 }
