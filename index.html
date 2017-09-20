@@ -3,50 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
+    <meta name="theme-color" content="#0197F6">
     <title>CAS FEE Project 1</title>
-</head>
-<body>
 
-<header>
-    <div>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/theme_2.css">
+</head>
+<body class="grid-column">
+
+<header class="grid">
+    <div class="cell">
         <button>create new note</button>
     </div>
-    <div>
-        <select name="theme">
-            <option value="1">White-Black-Style</option>
-            <option value="2">Black-Orange-Style</option>
-            <option value="3">White-Blue-Style</option>
-            <option value="4">Brown-Red-Style</option>
-        </select>
+    <div class="cell-shrink">
+        <span class="select">
+            <select name="theme">
+                <option value="1">White-Black-Style</option>
+                <option value="2">Black-Orange-Style</option>
+                <option value="3">White-Blue-Style</option>
+            </select>
+        </span>
     </div>
 </header>
 
-<nav>
-    <div>
+<nav class="grid">
+    <div class="cell">
         <button>By finish Date</button>
         <button>By created Date</button>
         <button>By Importance</button>
     </div>
-    <div>
+    <div class="cell-srink">
         <button>Show finished</button>
     </div>
 </nav>
 
-<main>
+<main class="cell-grow">
 
     <section>
+        <button class="round">✔</button>
         <div class="duetodate">Nächsten Mittwoch</div>
-        <h3>CAS FEE Selbststudium / Projekt Aufgabe erledigen</h3>
-        <div class="rating"></div>
-        <div class="content">HTML für die note App erstellen
-        CSS erstellen für die note App.</div>
-        <div class="options">
-            <button>finished</button>
-            <button>edit</button>
+        <div data-rating="3">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
         </div>
+        <details>
+            <summary>CAS FEE Selbststudium / Projekt Aufgabe erledigen</summary>
+            <p>HTML für die note App erstellen</p>
+            <p>CSS erstellen für die note App.</p>
+        </details>
+        <button class="round edit">✎</button>
+    </section>
+
+    <section>
+        <button class="round checked">✔</button>
+        <div class="duetodate">Heute</div>
+        <div data-rating="1">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+        </div>
+        <details>
+            <summary>Einkaufen</summary>
+            <p>Butter</p>
+            <p>Eier</p>
+        </details>
+        <button class="round edit">✎</button>
+    </section>
+
+    <section>
+        <button class="round">✔</button>
+        <div class="duetodate">Nächsten Mittwoch</div>
+        <div data-rating="2">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+        </div>
+        <details>
+            <summary>CAS FEE Selbststudium / Projekt Aufgabe erledigen</summary>
+            <p>HTML für die note App erstellen</p>
+            <p> CSS erstellen für die note App.</p>
+        </details>
+        <button class="round edit">✎</button>
     </section>
 
 </main>
+
+<footer>
+    <div>
+        <button class="round">+</button>
+    </div>
+</footer>
 
 </body>
 </html>

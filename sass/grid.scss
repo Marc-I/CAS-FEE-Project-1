@@ -1,0 +1,33 @@
+
+.grid {
+  display: flex;
+
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.cell {
+  flex: 1 0 0;
+
+  &-shrink {
+    flex: 0 1 0;
+  }
+
+  &-grow {
+    flex: 1 0 0;
+    overflow: auto;
+  }
+
+  @for $i from 1 through 12 {
+    &-#{$i} {
+      flex: percentage($i / 12);
+    }
+  }
+}

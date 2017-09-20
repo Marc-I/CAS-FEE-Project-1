@@ -1,0 +1,58 @@
+
+main section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 9rem 1fr 1fr 9rem;
+  margin: 4rem 1rem;
+  background-color: white;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+
+  &:last-child {
+    margin-bottom: 6rem;
+  }
+
+  .duetodate {
+    padding: 1rem;
+  }
+
+  [data-rating] {
+    grid-column: 3/5;
+    margin: 0 1rem;
+    font-size: 3rem;
+    color: #ccc;
+    cursor: pointer;
+
+    span {
+      margin: 0 -1rem;
+      padding: 1rem;
+    }
+
+    &:hover span:nth-child(n) {
+      color: #000;
+    }
+
+    & span:hover ~ span {
+      color: #ccc !important;
+    }
+  }
+
+  [data-rating="0"] span:nth-child(-n),
+  [data-rating="1"] span:nth-child(-n+1),
+  [data-rating="2"] span:nth-child(-n+2),
+  [data-rating="3"] span:nth-child(-n+3),
+  [data-rating="4"] span:nth-child(-n+4),
+  [data-rating="5"] span:nth-child(n) {
+    color: #000;
+  }
+
+  details {
+    grid-column: 1/5;
+  }
+
+  button {
+    margin: -2.5rem 2rem;
+  }
+  .edit {
+    grid-column: 4/5;
+  }
+}

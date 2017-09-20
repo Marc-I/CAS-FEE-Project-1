@@ -1,0 +1,63 @@
+
+h3 {
+  font-weight: 100;
+}
+
+button {
+  position: relative;
+  border: none;
+  color: white;
+  background-color: #0197F6;
+  font-size: 2rem;
+  padding: 1rem;
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  outline: none;
+  cursor: pointer;
+
+  &:active {
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.5) inset;
+  }
+
+  &.round {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+  }
+
+  &.checked {
+    background-color: #97CC04;
+  }
+}
+
+select {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+  height: 4rem;
+  outline: none;
+}
+
+span.select {
+  display: block;
+  background-color: #0197F6;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.5);
+  padding: .15rem .5rem;
+}
+
+details {
+  border-top: 1px solid #ddd;
+  padding: 1rem;
+
+  :not(summary) {
+    color: #999;
+  }
+}
+
+summary {
+  font-size: 2rem;
+  font-weight: 100;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
