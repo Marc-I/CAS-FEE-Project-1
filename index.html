@@ -9,13 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/theme_2.css">
+    <!--<link rel="stylesheet" href="css/theme_1.css">
+    <link rel="stylesheet" href="css/theme_2.css">-->
 </head>
 <body class="grid-column">
 
 <header class="grid">
     <div class="cell">
-        <button>create new note</button>
+        <label class="button" for="formtoggler">create new note</label>
     </div>
     <div class="cell-shrink">
         <span class="select">
@@ -97,10 +98,60 @@
 
 </main>
 
+<input type="checkbox" id="formtoggler">
+<section class="form">
+    <form action="#" method="post">
+        <div>
+            <h1>Hinzufügen / Bearbeiten</h1>
+
+            <div class="material inputgroup">
+                <input type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Titel</label>
+            </div>
+
+            <div class="material inputgroup">
+                <textarea name="description" required></textarea>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Beschreibung</label>
+            </div>
+
+            <div class="material inputgroup">
+                <input type="hidden">
+                <label>Wichtigkeit</label>
+            </div>
+            <div class="rating">
+                <label for="rating_0">⊘</label>
+                <input type="radio" name="rating" value="0" id="rating_0" checked>
+                <label for="rating_1">★</label>
+                <input type="radio" name="rating" value="1" id="rating_1">
+                <label for="rating_2">★</label>
+                <input type="radio" name="rating" value="2" id="rating_2">
+                <label for="rating_3">★</label>
+                <input type="radio" name="rating" value="3" id="rating_3">
+                <label for="rating_4">★</label>
+                <input type="radio" name="rating" value="4" id="rating_4">
+                <label for="rating_5">★</label>
+                <input type="radio" name="rating" value="5" id="rating_5">
+            </div>
+
+            <div class="material inputgroup">
+                <input type="date" name="dueto" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Erledigen bis:</label>
+            </div>
+
+            <button type="submit">speichern</button>
+            <label class="button" for="formtoggler">abbrechen</label>
+        </div>
+    </form>
+</section>
+
 <footer>
-    <div>
-        <button class="round">+</button>
-    </div>
+    <label class="button round" for="formtoggler">+</label>
 </footer>
 
 </body>

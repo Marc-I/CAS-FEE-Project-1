@@ -1,0 +1,172 @@
+#formtoggler {
+  display: none;
+
+  &:checked + section.form {
+    display: flex;
+  }
+}
+
+section.form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
+
+  .material input, .material textarea {
+    width: 100%;
+  }
+
+  .rating label {
+    color: #000;
+    font-size: 2rem;
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked ~ label {
+      color: #ccc;
+    }
+  }
+
+  button {
+    margin: auto;
+
+    &[type="submit"] {
+      width: 100%;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.material {
+
+  &.inputgroup input:focus,
+  &.inputgroup textarea:focus,
+  &button:active,
+  &button:focus {
+    outline: 0
+  }
+
+  &button {
+    margin: 8px 0;
+    padding: 8px 24px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 1px 1px 0 #ddd;
+    text-transform: uppercase;
+    font-size: 1em
+  }
+
+  &.inputgroup {
+    position: relative;
+    margin-top: 2em;
+
+    input, textarea {
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 300px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background-color: transparent;
+
+      &:focus ~ label, &:valid ~ label {
+        top: -20px;
+        font-size: 14px;
+        color: #0197F6;
+      }
+
+      &:focus ~ .bar:after, &:focus ~ .bar:before {
+        width: 50%;
+      }
+
+      &:focus ~ .highlight {
+        -webkit-animation: inputHighlighter .3s ease;
+        animation: inputHighlighter .3s ease;
+      }
+    }
+
+    input[type="date"] ~ label, input[type="hidden"] ~ label {
+      top: -20px;
+    }
+
+    label {
+      color: #ccc;
+      font-size: 18px;
+      font-weight: 400;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      transition: .2s ease all;
+    }
+
+    .bar {
+      position: relative;
+      display: block;
+      width: 300px;
+
+      &:after, &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #0197F6;
+        transition: .4s ease all;
+      }
+
+      &:before {
+        left: 50%;
+      }
+
+      &:after {
+        right: 50%;
+      }
+    }
+
+    .highlight {
+      position: absolute;
+      height: 60%;
+      width: 100px;
+      top: 25%;
+      left: 0;
+      pointer-events: none;
+      opacity: .5;
+    }
+  }
+}
+
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #0197F6
+  }
+  to {
+    width: 0;
+    background: 0 0
+  }
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #0197F6
+  }
+  to {
+    width: 0;
+    background: 0 0
+  }
+}

@@ -3,8 +3,9 @@ h3 {
   font-weight: 100;
 }
 
-button {
+button, label.button {
   position: relative;
+  display: inline-block;
   border: none;
   color: white;
   background-color: #0197F6;
@@ -15,7 +16,7 @@ button {
   cursor: pointer;
 
   &:active {
-    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.5) inset;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5) inset;
   }
 
   &.round {
@@ -26,6 +27,15 @@ button {
 
   &.checked {
     background-color: #97CC04;
+  }
+}
+
+label.button {
+  text-align: center;
+  font-size: 2rem;
+
+  &.round {
+    line-height: 3rem;
   }
 }
 
@@ -41,7 +51,7 @@ select {
 span.select {
   display: block;
   background-color: #0197F6;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.5);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .5);
   padding: .15rem .5rem;
 }
 
