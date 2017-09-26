@@ -1,0 +1,36 @@
+
+button, span.select, label.button {
+  background-color: #0197F6;
+}
+
+header, footer {
+  background-color: #404E5C;
+}
+
+nav {
+  background-color: #4F6272;
+}
+
+
+
+
+
+
+
+.material.inputgroup input:focus ~ label, .material.inputgroup input:valid ~ label, .material.inputgroup textarea:focus ~ label, .material.inputgroup textarea:valid ~ label {
+  color: #0197F6
+}
+
+.material.inputgroup .bar:after, .material.inputgroup .bar:before {
+  background: #0197F6;
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #0197F6
+  }
+  to {
+    width: 0;
+    background: 0 0
+  }
+}
