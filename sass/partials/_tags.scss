@@ -11,10 +11,13 @@ button, label.button {
   background-color: #0197F6;
   font-size: 2rem;
   padding: 1rem;
-  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   outline: none;
   cursor: pointer;
   user-select: none;
+
+  &:hover {
+    box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
 
   &:active {
     box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5) inset;

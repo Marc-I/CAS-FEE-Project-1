@@ -2,8 +2,9 @@
 main section {
   position: relative;
   display: grid;
+  margin: 4rem auto;
+  max-width: 800px;
   grid-template-columns: 9rem 1fr 1fr 9rem;
-  margin: 4rem 1rem;
   background-color: white;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
 
@@ -13,6 +14,10 @@ main section {
 
   .duetodate {
     padding: 1rem;
+
+    @media (max-width: 500px) {
+      grid-column: 2/5;
+    }
   }
 
   [data-rating] {
@@ -21,6 +26,11 @@ main section {
     font-size: 3rem;
     color: #ccc;
     cursor: pointer;
+
+    @media (max-width: 500px) {
+      grid-column: 1/5;
+      text-align: right;
+    }
 
     span {
       margin: 0 -1rem;
