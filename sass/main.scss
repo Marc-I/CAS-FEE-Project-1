@@ -19,6 +19,13 @@ body {
   font-size: 1.4rem;
   font-weight: 300;
   background-color: #eee;
+
+  & > .wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @import "partials/tags";
