@@ -84,7 +84,8 @@ function createEditForm(entry = {}) {
 }
 
 let main = vDom.CN('main', {className: 'cell-grow'}, []);
-let editForm = vDom.CN('section', {className: 'form'}, [createEditForm()]);
+let editFormNode = vDom.CN('section', {id: 'editform'}, []);
+let editForm = new EditForm();
 let themeSelector = new ThemeSelector();
 
 // v-dom object (will be loaded from server later), represents the dom
@@ -93,15 +94,7 @@ let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
         vDom.CN('div', {className: 'cell'}, [
             vDom.CN('label', {className: 'button', for: 'formtoggler'}, ['create new note']),
         ]),
-        vDom.CN('div', {className: 'cell-shrink'}, [ themeSelector.GetNode()
-            // vDom.CN('span', {className: 'select'}, [
-            //     vDom.CN('select', {name: 'theme', id: 'themeselector'}, [
-            //         vDom.CN('option', {value: 1}, ['White-Black-Style']),
-            //         vDom.CN('option', {value: 2}, ['Black-Orange-Style']),
-            //         vDom.CN('option', {value: 3}, ['White-Blue-Style']),
-            //     ]),
-            // ]),
-        ]),
+        vDom.CN('div', {className: 'cell-shrink'}, [ themeSelector.GetNode() ]),
     ]),
     vDom.CN('nav', {className: 'grid'}, [
         vDom.CN('div', {className: 'cell'}, [
@@ -115,11 +108,44 @@ let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
     ]),
     main,
     vDom.CN('footer', {}, [
-        vDom.CN('label', {className: 'button round', for: 'formtoggler'}, ['+']),
+        vDom.CN('button', {type: 'button', className: 'round', onClick: () => editForm.Open()}, ['+']),
     ]),
-
-    vDom.CN('input', {type: 'checkbox', id: 'formtoggler'}, []),
-    editForm,
+    editFormNode,
 ]);
 
-vDom.Update(vdomTree);
+RenderUI();
+
+let entries = [
+    new Entry({id: '213', dueto: 'heute', rating: 5, title: 'neu', description: 'Hallo Welt'}),
+    new Entry({
+        id: '324123',
+        finished: false,
+        dueto: 'Übermorgen',
+        rating: 3,
+        title: 'Diese Seite fertig machen',
+        description: 'Es muss getan werden.\n- HTML\n- CSS\n- JS',
+    }),
+    new Entry({
+        id: '34523',
+        finished: true,
+        dueto: 'Nächsten Mittwoch',
+        rating: 4,
+        title: 'CAS FEE Selbststudium / Projekt Aufgabe erledigen',
+        description: 'HTML für die note App erstellen\nCSS erstellen für die note App.',
+    }),
+    new Entry({
+        id: '543353',
+        finished: false,
+        dueto: 'Heute',
+        rating: 1,
+        title: 'Einkaufen',
+        description: 'Butter\nEier\nBrot',
+    }),
+];
+
+main.children = entries.map(e => e.GetNode());
+RenderUI();
+
+function RenderUI() {
+    vDom.Update(vdomTree);
+}

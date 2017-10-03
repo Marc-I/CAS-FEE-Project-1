@@ -2,6 +2,9 @@
 
 class Entry {
     constructor() {
+        if (!arguments || arguments.length == 0)
+            return;
+
         this.id = arguments['id'] || arguments[0]['id'] || null;
         this.finished = arguments['finished'] || arguments[0]['finished'] || false;
         this.dueto = arguments['dueto'] || arguments[0]['dueto'] || null;
@@ -11,15 +14,14 @@ class Entry {
     }
 
     Edit() {
-        editForm.children = [createEditForm(this)];
-        vDom.Update(vdomTree);
+        editForm.Open(this);
     }
 
     Finish() {
         this.finished = !this.finished;
 
         main.children = entries.map(e => e.GetNode());
-        vDom.Update(vdomTree);
+        RenderUI();
     }
 
     GetNode() {
@@ -47,34 +49,3 @@ class Entry {
         ]);
     }
 }
-
-let entries = [
-    new Entry({id: '213', dueto: 'heute', rating: 5, title: 'neu', description: 'Hallo Welt'}),
-    new Entry({
-        id: '324123',
-        finished: false,
-        dueto: 'Übermorgen',
-        rating: 3,
-        title: 'Diese Seite fertig machen',
-        description: 'Es muss getan werden.\n- HTML\n- CSS\n- JS',
-    }),
-    new Entry({
-        id: '34523',
-        finished: true,
-        dueto: 'Nächsten Mittwoch',
-        rating: 4,
-        title: 'CAS FEE Selbststudium / Projekt Aufgabe erledigen',
-        description: 'HTML für die note App erstellen\nCSS erstellen für die note App.',
-    }),
-    new Entry({
-        id: '543353',
-        finished: false,
-        dueto: 'Heute',
-        rating: 1,
-        title: 'Einkaufen',
-        description: 'Butter\nEier\nBrot',
-    }),
-];
-
-main.children = entries.map(e => e.GetNode());
-vDom.Update(vdomTree);

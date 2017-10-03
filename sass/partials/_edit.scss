@@ -1,12 +1,5 @@
-#formtoggler {
-  display: none;
 
-  &:checked + section.form {
-    display: flex;
-  }
-}
-
-section.form {
+section#editform > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -14,7 +7,7 @@ section.form {
   bottom: 0;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 
