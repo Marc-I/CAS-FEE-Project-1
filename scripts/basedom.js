@@ -36,7 +36,7 @@ function createEditForm(entry = {}) {
                     name: 'rating',
                     value: '1',
                     id: 'rating_1',
-                    checked: entry.rating == 1
+                    checked: entry.rating === 1
                 }, ['']),
                 vDom.CreateNode('label', {for: 'rating_2'}, ['★']),
                 vDom.CreateNode('input', {
@@ -44,7 +44,7 @@ function createEditForm(entry = {}) {
                     name: 'rating',
                     value: '2',
                     id: 'rating_2',
-                    checked: entry.rating == 2
+                    checked: entry.rating === 2
                 }, ['']),
                 vDom.CreateNode('label', {for: 'rating_3'}, ['★']),
                 vDom.CreateNode('input', {
@@ -52,7 +52,7 @@ function createEditForm(entry = {}) {
                     name: 'rating',
                     value: '3',
                     id: 'rating_3',
-                    checked: entry.rating == 3
+                    checked: entry.rating === 3
                 }, ['']),
                 vDom.CreateNode('label', {for: 'rating_4'}, ['★']),
                 vDom.CreateNode('input', {
@@ -60,7 +60,7 @@ function createEditForm(entry = {}) {
                     name: 'rating',
                     value: '4',
                     id: 'rating_4',
-                    checked: entry.rating == 4
+                    checked: entry.rating === 4
                 }, ['']),
                 vDom.CreateNode('label', {for: 'rating_5'}, ['★']),
                 vDom.CreateNode('input', {
@@ -68,7 +68,7 @@ function createEditForm(entry = {}) {
                     name: 'rating',
                     value: '5',
                     id: 'rating_5',
-                    checked: entry.rating == 5
+                    checked: entry.rating === 5
                 }, ['']),
             ]),
             vDom.CreateNode('div', {className: 'material inputgroup'}, [
@@ -83,11 +83,11 @@ function createEditForm(entry = {}) {
     ]);
 }
 
-var main = vDom.CreateNode('main', {className: 'cell-grow'}, []);
-var editForm = vDom.CreateNode('section', {className: 'form'}, [createEditForm()]);
+let main = vDom.CreateNode('main', {className: 'cell-grow'}, []);
+let editForm = vDom.CreateNode('section', {className: 'form'}, [createEditForm()]);
 
 // v-dom object (will be loaded from server later), represents the dom
-var vdomTree = vDom.CreateNode('div', {className: 'wrapper grid-column'}, [
+let vdomTree = vDom.CreateNode('div', {className: 'wrapper grid-column'}, [
     vDom.CreateNode('header', {className: 'grid'}, [
         vDom.CreateNode('div', {className: 'cell'}, [
             vDom.CreateNode('label', {className: 'button', for: 'formtoggler'}, ['create new note']),

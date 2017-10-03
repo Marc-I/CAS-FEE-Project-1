@@ -1,16 +1,16 @@
 'use strict';
 
 // selects the theme-selection
-var themeSelector = document.getElementById('themeselector');
+let themeSelector = document.getElementById('themeselector');
 
 /*
  * gets the theme from the local storage
  */
 function initTheme() {
     if (typeof Storage !== undefined) {
-        var theme = localStorage.getItem('theme');
+        let theme = localStorage.getItem('theme');
         // if there is a value in the local storage
-        if (!!theme) {
+        if (!!theme && !!themeSelector) {
             // sets the selection
             themeSelector.value = theme;
             changeTheme(theme);
@@ -21,34 +21,42 @@ function initTheme() {
 // call init-function on startup
 initTheme();
 
-/*
- * EventListener for click on options (fallback for EventListener on change)
- */
-themeSelector.addEventListener('click', function () {
-    var options = themeSelector.querySelectorAll('option');
-    var count = options.length;
-    if (typeof count === 'undefined' || count < 2) {
-        changeTheme(count);
+function addEventListeners() {
+    if (!themeSelector) {
+        setTimeout(addEventListeners, 100);
+        return;
     }
-});
+    /*
+     * EventListener for click on options (fallback for EventListener on change)
+     */
+    themeSelector.addEventListener('click', function () {
+        let options = themeSelector.querySelectorAll('option');
+        let count = options.length;
+        if (typeof count === 'undefined' || count < 2) {
+            changeTheme(count);
+        }
+    });
 
-/*
- * EventListener on change of selection
- */
-themeSelector.addEventListener('change', function () {
-    changeTheme(themeSelector.value);
-});
+    /*
+     * EventListener on change of selection
+     */
+    themeSelector.addEventListener('change', function () {
+        changeTheme(themeSelector.value);
+    });
+}
+
+addEventListeners();
 
 /*
  * changes the theme-link in head
  */
 function changeTheme(newTheme) {
     // link-element in head
-    var linkElement = document.querySelector('link[href^=\'css/theme\']');
+    let linkElement = document.querySelector('link[href^=\'css/theme\']');
 
     // create, if does not exist
     if (linkElement === null) {
-        var link = document.createElement('link');
+        let link = document.createElement('link');
         link.href = 'css/theme_' + newTheme + '.css';
         link.rel = 'stylesheet';
 
