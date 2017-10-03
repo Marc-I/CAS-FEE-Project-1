@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta name="theme-color" content="#0197F6">
     <title>CAS FEE Project 1</title>
+    <script>const start = Date.now();</script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -14,10 +15,13 @@
 
 <div id="body"></div>
 
+
 <script src="scripts/vdom.js"></script>
+<script src="scripts/theme.js"></script>
 <script src="scripts/basedom.js"></script>
 <script src="scripts/entries.js"></script>
-<script src="scripts/theme.js"></script>
+
+<script>console.log('rendered in ' + (Date.now()-start) + ' msecs');</script>
 
 </body>
 </html>

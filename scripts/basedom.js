@@ -1,28 +1,28 @@
 'use strict';
 
 function createEditForm(entry = {}) {
-    return vDom.CreateNode('form', {action: '#', method: 'post'}, [
-        vDom.CreateNode('div', {}, [
-            vDom.CreateNode('h1', {}, ['Hinzufügen / Bearbeiten']),
-            vDom.CreateNode('div', {className: 'material inputgroup'}, [
-                vDom.CreateNode('input', {type: 'text', name: 'title', value: entry.title, required: true}, []),
-                vDom.CreateNode('span', {className: 'highlight'}, []),
-                vDom.CreateNode('span', {className: 'bar'}, []),
-                vDom.CreateNode('label', {}, ['Titel']),
+    return vDom.CN('form', {action: '#', method: 'post'}, [
+        vDom.CN('div', {}, [
+            vDom.CN('h1', {}, ['Hinzufügen / Bearbeiten']),
+            vDom.CN('div', {className: 'material inputgroup'}, [
+                vDom.CN('input', {type: 'text', name: 'title', value: entry.title, required: true}, []),
+                vDom.CN('span', {className: 'highlight'}, []),
+                vDom.CN('span', {className: 'bar'}, []),
+                vDom.CN('label', {}, ['Titel']),
             ]),
-            vDom.CreateNode('div', {className: 'material inputgroup'}, [
-                vDom.CreateNode('textarea', {name: 'description', required: true}, [entry.description || '']),
-                vDom.CreateNode('span', {className: 'highlight'}, []),
-                vDom.CreateNode('span', {className: 'bar'}, []),
-                vDom.CreateNode('label', {}, ['Beschreibung']),
+            vDom.CN('div', {className: 'material inputgroup'}, [
+                vDom.CN('textarea', {name: 'description', required: true}, [entry.description || '']),
+                vDom.CN('span', {className: 'highlight'}, []),
+                vDom.CN('span', {className: 'bar'}, []),
+                vDom.CN('label', {}, ['Beschreibung']),
             ]),
-            vDom.CreateNode('div', {className: 'material inputgroup'}, [
-                vDom.CreateNode('input', {type: 'hidden'}, []),
-                vDom.CreateNode('label', {}, ['Wichtigkeit']),
+            vDom.CN('div', {className: 'material inputgroup'}, [
+                vDom.CN('input', {type: 'hidden'}, []),
+                vDom.CN('label', {}, ['Wichtigkeit']),
             ]),
-            vDom.CreateNode('div', {className: 'rating'}, [
-                /*                   vDom.CreateNode('label', {for: 'rating_0'}, ['⊘']),
-                                   vDom.CreateNode('input', {
+            vDom.CN('div', {className: 'rating'}, [
+                /*                   vDom.CN('label', {for: 'rating_0'}, ['⊘']),
+                                   vDom.CN('input', {
                                        type: 'radio',
                                        name: 'rating',
                                        value: '0',
@@ -30,40 +30,40 @@ function createEditForm(entry = {}) {
                                        checked: true
                                    }, ['']),
                                  */
-                vDom.CreateNode('label', {for: 'rating_1'}, ['★']),
-                vDom.CreateNode('input', {
+                vDom.CN('label', {for: 'rating_1'}, ['★']),
+                vDom.CN('input', {
                     type: 'radio',
                     name: 'rating',
                     value: '1',
                     id: 'rating_1',
                     checked: entry.rating === 1
                 }, ['']),
-                vDom.CreateNode('label', {for: 'rating_2'}, ['★']),
-                vDom.CreateNode('input', {
+                vDom.CN('label', {for: 'rating_2'}, ['★']),
+                vDom.CN('input', {
                     type: 'radio',
                     name: 'rating',
                     value: '2',
                     id: 'rating_2',
                     checked: entry.rating === 2
                 }, ['']),
-                vDom.CreateNode('label', {for: 'rating_3'}, ['★']),
-                vDom.CreateNode('input', {
+                vDom.CN('label', {for: 'rating_3'}, ['★']),
+                vDom.CN('input', {
                     type: 'radio',
                     name: 'rating',
                     value: '3',
                     id: 'rating_3',
                     checked: entry.rating === 3
                 }, ['']),
-                vDom.CreateNode('label', {for: 'rating_4'}, ['★']),
-                vDom.CreateNode('input', {
+                vDom.CN('label', {for: 'rating_4'}, ['★']),
+                vDom.CN('input', {
                     type: 'radio',
                     name: 'rating',
                     value: '4',
                     id: 'rating_4',
                     checked: entry.rating === 4
                 }, ['']),
-                vDom.CreateNode('label', {for: 'rating_5'}, ['★']),
-                vDom.CreateNode('input', {
+                vDom.CN('label', {for: 'rating_5'}, ['★']),
+                vDom.CN('input', {
                     type: 'radio',
                     name: 'rating',
                     value: '5',
@@ -71,53 +71,54 @@ function createEditForm(entry = {}) {
                     checked: entry.rating === 5
                 }, ['']),
             ]),
-            vDom.CreateNode('div', {className: 'material inputgroup'}, [
-                vDom.CreateNode('input', {type: 'date', name: 'dueto', value: entry.dueto, required: true}, []),
-                vDom.CreateNode('span', {className: 'highlight'}, []),
-                vDom.CreateNode('span', {className: 'bar'}, []),
-                vDom.CreateNode('label', {}, ['Erledigen bis:']),
+            vDom.CN('div', {className: 'material inputgroup'}, [
+                vDom.CN('input', {type: 'date', name: 'dueto', value: entry.dueto, required: true}, []),
+                vDom.CN('span', {className: 'highlight'}, []),
+                vDom.CN('span', {className: 'bar'}, []),
+                vDom.CN('label', {}, ['Erledigen bis:']),
             ]),
-            vDom.CreateNode('button', {type: 'submit'}, ['speichern']),
-            vDom.CreateNode('label', {className: 'button', for: 'formtoggler'}, ['abbrechen']),
+            vDom.CN('button', {type: 'submit'}, ['speichern']),
+            vDom.CN('label', {className: 'button', for: 'formtoggler'}, ['abbrechen']),
         ]),
     ]);
 }
 
-let main = vDom.CreateNode('main', {className: 'cell-grow'}, []);
-let editForm = vDom.CreateNode('section', {className: 'form'}, [createEditForm()]);
+let main = vDom.CN('main', {className: 'cell-grow'}, []);
+let editForm = vDom.CN('section', {className: 'form'}, [createEditForm()]);
+let themeSelector = new ThemeSelector();
 
 // v-dom object (will be loaded from server later), represents the dom
-let vdomTree = vDom.CreateNode('div', {className: 'wrapper grid-column'}, [
-    vDom.CreateNode('header', {className: 'grid'}, [
-        vDom.CreateNode('div', {className: 'cell'}, [
-            vDom.CreateNode('label', {className: 'button', for: 'formtoggler'}, ['create new note']),
+let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
+    vDom.CN('header', {className: 'grid'}, [
+        vDom.CN('div', {className: 'cell'}, [
+            vDom.CN('label', {className: 'button', for: 'formtoggler'}, ['create new note']),
         ]),
-        vDom.CreateNode('div', {className: 'cell-shrink'}, [
-            vDom.CreateNode('span', {className: 'select'}, [
-                vDom.CreateNode('select', {name: 'theme', id: 'themeselector'}, [
-                    vDom.CreateNode('option', {value: 1}, ['White-Black-Style']),
-                    vDom.CreateNode('option', {value: 2}, ['Black-Orange-Style']),
-                    vDom.CreateNode('option', {value: 3}, ['White-Blue-Style']),
-                ]),
-            ]),
+        vDom.CN('div', {className: 'cell-shrink'}, [ themeSelector.GetNode()
+            // vDom.CN('span', {className: 'select'}, [
+            //     vDom.CN('select', {name: 'theme', id: 'themeselector'}, [
+            //         vDom.CN('option', {value: 1}, ['White-Black-Style']),
+            //         vDom.CN('option', {value: 2}, ['Black-Orange-Style']),
+            //         vDom.CN('option', {value: 3}, ['White-Blue-Style']),
+            //     ]),
+            // ]),
         ]),
     ]),
-    vDom.CreateNode('nav', {className: 'grid'}, [
-        vDom.CreateNode('div', {className: 'cell'}, [
-            vDom.CreateNode('button', {}, ['By finish Date']),
-            vDom.CreateNode('button', {}, ['By created Date']),
-            vDom.CreateNode('button', {}, ['By Importance']),
+    vDom.CN('nav', {className: 'grid'}, [
+        vDom.CN('div', {className: 'cell'}, [
+            vDom.CN('button', {}, ['By finish Date']),
+            vDom.CN('button', {}, ['By created Date']),
+            vDom.CN('button', {}, ['By Importance']),
         ]),
-        vDom.CreateNode('div', {className: 'cell-srink'}, [
-            vDom.CreateNode('button', {}, ['Show finished']),
+        vDom.CN('div', {className: 'cell-srink'}, [
+            vDom.CN('button', {}, ['Show finished']),
         ]),
     ]),
     main,
-    vDom.CreateNode('footer', {}, [
-        vDom.CreateNode('label', {className: 'button round', for: 'formtoggler'}, ['+']),
+    vDom.CN('footer', {}, [
+        vDom.CN('label', {className: 'button round', for: 'formtoggler'}, ['+']),
     ]),
 
-    vDom.CreateNode('input', {type: 'checkbox', id: 'formtoggler'}, []),
+    vDom.CN('input', {type: 'checkbox', id: 'formtoggler'}, []),
     editForm,
 ]);
 

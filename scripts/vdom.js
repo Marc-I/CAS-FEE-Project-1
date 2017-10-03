@@ -4,7 +4,6 @@
  * Based on the tutorial from deathmood on medium.com
  * https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060
  */
-
 class vDom {
 
 // ---------------------- properties ----------------------
@@ -14,7 +13,7 @@ class vDom {
      */
     static _setBooleanProp(targetElement, name, value) {
         if (value) {
-            targetElement.setAttribute(name, value);
+            targetElement.setAttribute(name, '');
             targetElement[name] = true;
         } else {
             targetElement[name] = false;
@@ -194,9 +193,9 @@ class vDom {
     }
 
     /*
-     * creates a v dom node
+     * creates a vdom node
      */
-    static CreateNode(type, props = {}, children = []) {
+    static CN(type, props = {}, children = []) {
         return {type, props, children};
     }
 
