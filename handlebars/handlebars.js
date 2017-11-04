@@ -1,9 +1,21 @@
 'use strict';
 
-var source   = $("#entry-template").html();
-var template = Handlebars.compile(source);
+var header_html = $("#header-template").html();
+var header_template = Handlebars.compile(header_html);
+var header_context = {title: "Die Website"};
 
-var context = {title: "My New Post", body: "This is my first post!"};
-var html    = template(context);
+$('body').append(header_template(header_context));
 
-$('body').append(html);
+var entry_html = $('#entry-template').html();
+var entry_template = Handlebars.compile(entry_html);
+var entries = [
+    {title: "Das ist ein Eintrag", content: "Das ist mein Text"},
+    {title: "Das ist noch ein Eintrag", content: "Das ist noch ein Text"},
+    {title: "Das ist ein weiterer Eintrag", content: "Das ist ein weiterer Text"},
+    {title: "Ein Eintrag", content: "Ein Text"},
+    {title: "Eintrag", content: "Text"}
+    ];
+
+entries.forEach(e => {
+    $('body').append(entry_template(e));
+});
