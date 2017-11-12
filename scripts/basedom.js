@@ -89,8 +89,18 @@ let editFormNode = vDom.CN('section', {id: 'editform'}, []);
 let editForm = new EditForm();
 let themeSelector = new ThemeSelector();
 
-function LoadEntriesSorted(sorting) {
-    Ajax.GET('http://127.0.0.1:3119/api/todo' + (sorting ? '?sort=' + sorting : ''), data => {
+let sortString = 'dueto';
+let filterString = null;
+
+function LoadEntries(sorting, filtering) {
+    sortString = sorting || sortString;
+    filterString = filtering ? (filtering === filterString ? null : filtering) : filterString;
+    let querystring = [
+        (sortString ? 'sort=' + sortString : null),
+        (filterString ? 'filter=' + filterString : null)
+    ].filter(e => e !== null).join('&');
+
+    Ajax.GET('http://127.0.0.1:3119/api/todo' + (querystring ? '?' + querystring : ''), data => {
         entries = JSON.parse(data).map(e => new Entry(e));
         main.children = entries.map(e => e.GetNode());
         RenderUI();
@@ -107,12 +117,12 @@ let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
     ]),
     vDom.CN('nav', {className: 'grid'}, [
         vDom.CN('div', {className: 'cell'}, [
-            vDom.CN('button', {onClick: () => LoadEntriesSorted('finished')}, ['By finish Date']),
-            vDom.CN('button', {onClick: () => LoadEntriesSorted('created')}, ['By created Date']),
-            vDom.CN('button', {onClick: () => LoadEntriesSorted('rating')}, ['By Importance']),
+            vDom.CN('button', {onClick: () => LoadEntries('finished')}, ['By finish Date']),
+            vDom.CN('button', {onClick: () => LoadEntries('created')}, ['By created Date']),
+            vDom.CN('button', {onClick: () => LoadEntries('rating')}, ['By Importance']),
         ]),
         vDom.CN('div', {className: 'cell-srink'}, [
-            vDom.CN('button', {}, ['Show finished']),
+            vDom.CN('button', {onClick: () => LoadEntries(null, true)}, ['Show finished']),
         ]),
     ]),
     main,
@@ -153,7 +163,7 @@ let entries = [
     }),
 ];
 */
-LoadEntriesSorted('dueto');
+LoadEntries();
 RenderUI();
 
 function RenderUI() {
