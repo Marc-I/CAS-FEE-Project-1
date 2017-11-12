@@ -84,6 +84,7 @@ function createEditForm(entry = {}) {
 }
 
 let main = vDom.CN('main', {className: 'cell-grow'}, []);
+let entries = [];
 let editFormNode = vDom.CN('section', {id: 'editform'}, []);
 let editForm = new EditForm();
 let themeSelector = new ThemeSelector();
@@ -115,6 +116,7 @@ let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
 
 RenderUI();
 
+/*
 let entries = [
     new Entry({id: '213', dueto: 'heute', rating: 5, title: 'neu', description: 'Hallo Welt'}),
     new Entry({
@@ -142,8 +144,9 @@ let entries = [
         description: 'Butter\nEier\nBrot',
     }),
 ];
-
-main.children = entries.map(e => e.GetNode());
+*/
+Entry.GetAll();
+//main.children = entries.map(e => e.GetNode());
 RenderUI();
 
 function RenderUI() {

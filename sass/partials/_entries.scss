@@ -4,7 +4,7 @@ main section {
   display: grid;
   margin: 4rem auto;
   max-width: 800px;
-  grid-template-columns: 9rem 1fr 1fr 9rem;
+  grid-template-columns: 9rem 1fr 1fr 7rem 9rem;
   background-color: white;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
 
@@ -16,19 +16,19 @@ main section {
     padding: 1rem;
 
     @media (max-width: 500px) {
-      grid-column: 2/5;
+      grid-column: 2/6;
     }
   }
 
   [data-rating] {
-    grid-column: 3/5;
+    grid-column: 3/6;
     margin: 0 1rem;
     font-size: 3rem;
     color: #ccc;
     cursor: pointer;
 
     @media (max-width: 500px) {
-      grid-column: 1/5;
+      grid-column: 1/6;
       text-align: right;
     }
 
@@ -56,7 +56,7 @@ main section {
   }
 
   details {
-    grid-column: 1/5;
+    grid-column: 1/6;
   }
 
   & > input[type="checkbox"] {
@@ -71,7 +71,19 @@ main section {
     margin: -2.5rem 2rem;
   }
 
+  .delete {
+    display: none;
+    grid-column: 4;
+  }
+
   .edit {
-    grid-column: 4/5;
+    display: none;
+    grid-column: 5;
+  }
+
+  &:hover {
+    .delete, .edit {
+      display: block;
+    }
   }
 }

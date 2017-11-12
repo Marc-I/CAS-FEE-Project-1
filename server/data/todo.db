@@ -1,2 +1,22 @@
-{"Name":"Auchter","Prename":"Urs","_id":"qQPI21jjSaDQCUzI"}
-{"Name":"Engi","Prename":"Mario","_id":"tY3b3Z1H6ihhyCjL"}
+{"_id":"ApHsFaiRpNjpvORr","finished":true,"dueto":"2017-11-24","rating":4,"title":"Diese Seite fertig machen","description":"Es muss getan werden.\n- HTML\n- CSS\n- JS\n- Server"}
+{"_id":"lV90SYwZ10x7M5Az","finished":true,"dueto":"heute","rating":5,"title":"neu","description":"Hallo Welt"}
+{"_id":"ycDq8q99yZAYdLxQ","finished":true,"dueto":"Nächsten Mittwoch","rating":"4","title":"CAS FEE Selbststudium / Projekt Aufgabe erledigen","description":"HTML für die note App erstellen\nCSS erstellen für die note App."}
+{"finished":false,"dueto":"2018-01-01","rating":"1","title":"Ein Eintrag","description":"Hallo Welt","_id":"0hRtsexzTaeDh9Ib"}
+{"finished":false,"dueto":"2018-12-31","rating":"1","title":"test","description":"test","_id":"Kf7MFqbiCQme1KdW"}
+{"finished":false,"dueto":"2018-01-01","rating":"1","title":"noch ein Eintrag","description":"so","_id":"qLXOFe6HqGC9hTIT"}
+{"$$deleted":true,"_id":"qLXOFe6HqGC9hTIT"}
+{"$$deleted":true,"_id":"Kf7MFqbiCQme1KdW"}
+{"$$deleted":true,"_id":"0hRtsexzTaeDh9Ib"}
+{"_id":"lV90SYwZ10x7M5Az","finished":false,"dueto":"heute","rating":5,"title":"neu","description":"Hallo Welt"}
+{"_id":"ycDq8q99yZAYdLxQ","finished":false,"dueto":"Nächsten Mittwoch","rating":"4","title":"CAS FEE Selbststudium / Projekt Aufgabe erledigen","description":"HTML für die note App erstellen\nCSS erstellen für die note App."}
+{"_id":"lV90SYwZ10x7M5Az","finished":true,"dueto":"heute","rating":5,"title":"neu","description":"Hallo Welt"}
+{"_id":"lV90SYwZ10x7M5Az","finished":false,"dueto":"heute","rating":5,"title":"neu","description":"Hallo Welt"}
+{"finished":false,"dueto":"2018-01-01","rating":"1","title":"Test","description":"mit","_id":"Rl3AT4AeELrAy9to"}
+{"$$deleted":true,"_id":"Rl3AT4AeELrAy9to"}
+{"finished":false,"dueto":"2018-01-01","rating":"1","title":"Current Test","description":" ","_id":"VFkpucaGzINf87MW"}
+{"$$deleted":true,"_id":"VFkpucaGzINf87MW"}
+{"_id":"lV90SYwZ10x7M5Az","finished":false,"dueto":"heute","rating":3,"title":"neu","description":"Hallo Welt"}
+{"_id":"lV90SYwZ10x7M5Az","finished":false,"dueto":"heute","rating":2,"title":"neu","description":"Hallo Welt"}
+{"finished":false,"dueto":"2017-01-01","rating":3,"title":"Test","description":" ","_id":"fpfhWTHECe0UL0KW"}
+{"$$deleted":true,"_id":"fpfhWTHECe0UL0KW"}
+{"_id":"lV90SYwZ10x7M5Az","finished":false,"dueto":"heute","rating":4,"title":"neu","description":"Hallo Welt"}

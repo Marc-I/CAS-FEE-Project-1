@@ -8,6 +8,9 @@ const Datastore = require('nedb');
 const db = new Datastore({filename: './data/todo.db', autoload: true});
 
 const handler = function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
     let body = [];
     req.on('error', (err) => {
         console.error(err);
@@ -21,6 +24,18 @@ const handler = function (req, res) {
             let partials = req.url.split('/');
 
             switch (req.method) {
+                case "OPTIONS":
+                    let headers = {};
+                    // IE8 does not allow domains to be specified, just the *
+                    // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+                    headers["Access-Control-Allow-Origin"] = "*";
+                    headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+                    headers["Access-Control-Allow-Credentials"] = false;
+                    headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+                    headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+                    res.writeHead(200, headers);
+                    res.end();
+                    break;
                 case "GET":
                     if (partials.length > 3) {
                         db.findOne({_id: partials[3]}, function (err, newDoc) {
@@ -40,7 +55,7 @@ const handler = function (req, res) {
                 case "PUT": {
                     let newItem = JSON.parse(body);
                     db.update({_id: newItem._id}, newItem, {}, function (err, numReplaced) {
-                        res.end(numReplaced + " was a PUT");
+                        res.end(body);
                     });
                 }
                     break;
