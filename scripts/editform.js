@@ -24,7 +24,8 @@ class EditForm {
                     e.preventDefault();
                     this.Entry.Save(this);
                     return false;
-                }
+                },
+                forceUpdate: true
             }, [
                 vDom.CN('div', {}, [
                     vDom.CN('h1', {}, ['Hinzufügen / Bearbeiten']),
@@ -36,7 +37,8 @@ class EditForm {
                             required: true,
                             onChange: (event) => {
                                 this.Entry.title = event.target.value;
-                            }
+                            },
+                            forceUpdate: true
                         }, []),
                         vDom.CN('span', {className: 'highlight'}, []),
                         vDom.CN('span', {className: 'bar'}, []),
@@ -49,7 +51,8 @@ class EditForm {
                             required: true,
                             onChange: (event) => {
                                 this.Entry.description = event.target.value;
-                            }
+                            },
+                            forceUpdate: true
                         }, [this.Entry.description || '']),
                         vDom.CN('span', {className: 'highlight'}, []),
                         vDom.CN('span', {className: 'bar'}, []),
@@ -78,7 +81,8 @@ class EditForm {
                             checked: this.Entry.rating && this.Entry.rating.toString() === '1',
                             onClick: () => {
                                 this.Entry.rating = 1;
-                            }
+                            },
+                            forceUpdate: true
                         }, ['']),
                         vDom.CN('label', {for: 'rating_2'}, ['★']),
                         vDom.CN('input', {
@@ -89,7 +93,8 @@ class EditForm {
                             checked: this.Entry.rating && this.Entry.rating.toString() === '2',
                             onClick: () => {
                                 this.Entry.rating = 2;
-                            }
+                            },
+                            forceUpdate: true
                         }, ['']),
                         vDom.CN('label', {for: 'rating_3'}, ['★']),
                         vDom.CN('input', {
@@ -100,7 +105,8 @@ class EditForm {
                             checked: this.Entry.rating && this.Entry.rating.toString() === '3',
                             onClick: () => {
                                 this.Entry.rating = 3;
-                            }
+                            },
+                            forceUpdate: true
                         }, ['']),
                         vDom.CN('label', {for: 'rating_4'}, ['★']),
                         vDom.CN('input', {
@@ -111,7 +117,8 @@ class EditForm {
                             checked: this.Entry.rating && this.Entry.rating.toString() === '4',
                             onClick: () => {
                                 this.Entry.rating = 4;
-                            }
+                            },
+                            forceUpdate: true
                         }, ['']),
                         vDom.CN('label', {for: 'rating_5'}, ['★']),
                         vDom.CN('input', {
@@ -122,7 +129,8 @@ class EditForm {
                             checked: this.Entry.rating && this.Entry.rating.toString() === '5',
                             onClick: () => {
                                 this.Entry.rating = 5;
-                            }
+                            },
+                            forceUpdate: true
                         }, ['']),
                     ]),
                     vDom.CN('div', {className: 'material inputgroup'}, [
@@ -133,14 +141,15 @@ class EditForm {
                             required: true,
                             onChange: (event) => {
                                 this.Entry.dueto = event.target.value;
-                            }
+                            },
+                            forceUpdate: true
                         }, []),
                         vDom.CN('span', {className: 'highlight'}, []),
                         vDom.CN('span', {className: 'bar'}, []),
                         vDom.CN('label', {}, ['Erledigen bis:']),
                     ]),
-                    vDom.CN('button', {type: 'button', onClick: () => this.Entry.Save(this)}, ['speichern']),
-                    vDom.CN('button', {type: 'button', onClick: () => this.Close()}, ['abbrechen']),
+                    vDom.CN('button', {type: 'button', onClick: () => this.Entry.Save(this), forceUpdate: true}, ['speichern']),
+                    vDom.CN('button', {type: 'button', onClick: () => this.Close(), forceUpdate: true}, ['abbrechen']),
                 ]),
             ]),
         ]);

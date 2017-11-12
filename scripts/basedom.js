@@ -89,19 +89,27 @@ let editFormNode = vDom.CN('section', {id: 'editform'}, []);
 let editForm = new EditForm();
 let themeSelector = new ThemeSelector();
 
+function LoadEntriesSorted(sorting) {
+    Ajax.GET('http://127.0.0.1:3119/api/todo' + (sorting ? '?sort=' + sorting : ''), data => {
+        entries = JSON.parse(data).map(e => new Entry(e));
+        main.children = entries.map(e => e.GetNode());
+        RenderUI();
+    });
+}
+
 // v-dom object (will be loaded from server later), represents the dom
 let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
     vDom.CN('header', {className: 'grid'}, [
         vDom.CN('div', {className: 'cell'}, [
             vDom.CN('label', {className: 'button', for: 'formtoggler'}, ['create new note']),
         ]),
-        vDom.CN('div', {className: 'cell-shrink'}, [ themeSelector.GetNode() ]),
+        vDom.CN('div', {className: 'cell-shrink'}, [themeSelector.GetNode()]),
     ]),
     vDom.CN('nav', {className: 'grid'}, [
         vDom.CN('div', {className: 'cell'}, [
-            vDom.CN('button', {}, ['By finish Date']),
-            vDom.CN('button', {}, ['By created Date']),
-            vDom.CN('button', {}, ['By Importance']),
+            vDom.CN('button', {onClick: () => LoadEntriesSorted('finished')}, ['By finish Date']),
+            vDom.CN('button', {onClick: () => LoadEntriesSorted('created')}, ['By created Date']),
+            vDom.CN('button', {onClick: () => LoadEntriesSorted('rating')}, ['By Importance']),
         ]),
         vDom.CN('div', {className: 'cell-srink'}, [
             vDom.CN('button', {}, ['Show finished']),
@@ -145,8 +153,7 @@ let entries = [
     }),
 ];
 */
-Entry.GetAll();
-//main.children = entries.map(e => e.GetNode());
+LoadEntriesSorted('dueto');
 RenderUI();
 
 function RenderUI() {

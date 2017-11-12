@@ -10,6 +10,7 @@ const db = new Datastore({filename: './data/todo.db', autoload: true});
 const handler = function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Content-Type', 'application/json');
 
     let body = [];
     req.on('error', (err) => {
@@ -42,7 +43,28 @@ const handler = function (req, res) {
                             res.end(JSON.stringify(newDoc));
                         });
                     } else {
-                        db.find({}, function (err, newDoc) {
+                        let sorting = { dueto: 1 };
+                        if (req.url.indexOf('?') >= 0) {
+                            let querystring = req.url.split('?')[1];
+                            let queries = [];
+                            querystring.split('&').forEach(e => {
+                                let kvp = e.split('=');
+                                queries[kvp[0]] = kvp[1];
+                            });
+                            if (queries.hasOwnProperty('sort')) {
+                                switch (queries['sort']) {
+                                    case 'dueto': sorting = { dueto: 1 }; break;
+                                    case '-dueto': sorting = { dueto: -1 }; break;
+                                    case 'finished': sorting = { finished: 1 }; break;
+                                    case '-finished': sorting = { finished: -1 }; break;
+                                    case 'created': sorting = { created: 1 }; break;
+                                    case '-created': sorting = { created: -1 }; break;
+                                    case 'rating': sorting = { rating: 1 }; break;
+                                    case '-rating': sorting = { rating: -1 }; break;
+                                }
+                            }
+                        }
+                        db.find({}).sort(sorting).exec(function (err, newDoc) {
                             res.end(JSON.stringify(newDoc));
                         });
                     }
