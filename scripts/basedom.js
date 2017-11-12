@@ -111,7 +111,7 @@ function LoadEntries(sorting, filtering) {
 let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
     vDom.CN('header', {className: 'grid'}, [
         vDom.CN('div', {className: 'cell'}, [
-            vDom.CN('label', {className: 'button', for: 'formtoggler'}, ['create new note']),
+            vDom.CN('label', {className: 'button', for: 'formtoggler', onClick: () => editForm.Open()}, ['create new note']),
         ]),
         vDom.CN('div', {className: 'cell-shrink'}, [themeSelector.GetNode()]),
     ]),
