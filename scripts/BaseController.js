@@ -8,7 +8,7 @@ class BaseController {
         this.RenderFilterButton_1();
         this.RenderFilterButton_2();
         this.RenderFilterButton_3();
-        //this.RenderFilterButton_4();
+        this.RenderFilterButton_4();
     }
 
     RenderFilterButton_1() {
@@ -38,7 +38,14 @@ class BaseController {
     RenderFilterButton_4() {
         vDom.Render('filterFinishedButton', vDom.CN('button', {
             type: 'button',
-            onClick: () => BaseController.EntryController.Get(null, 'finished'),
+            id: 'filter',
+            onClick: () => {
+                let button = document.querySelector('main > div').classList;
+                if (button.contains('hidefinished'))
+                    button.remove('hidefinished');
+                else
+                    button.add('hidefinished');
+            },
             forceUpdate: true
         }, ['Show finished']));
     }

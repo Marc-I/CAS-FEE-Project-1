@@ -29,7 +29,7 @@ class EntryView {
         if (((new Date(new Date().getTime() + 86400000))).toDateString() === (new Date(entry.dueto)).toDateString()) duetodate = 'morgen';
         if (((new Date(new Date().getTime() + 2 * 86400000))).toDateString() === (new Date(entry.dueto)).toDateString()) duetodate = 'übermorgen';
 
-        return vDom.CN('section', {id: entry.id}, [
+        return vDom.CN('section', {id: entry.id, className: entry.finished == null ? '' : 'finished'}, [
             vDom.CN('input', {type: 'checkbox', id: 'entry_' + entry.id, checked: entry.finished !== null}, []),
             vDom.CN('label', {className: 'button round', onClick: () => this.controller.Finish(entry), forceUpdate: true}, ['✔']),
             vDom.CN('div', {className: 'duetodate', title: new Date(entry.dueto).toLocaleDateString()}, [duetodate]),
