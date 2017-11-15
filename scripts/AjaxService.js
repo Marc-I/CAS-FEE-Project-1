@@ -1,4 +1,6 @@
-class Ajax {
+'use strict';
+
+class AjaxService {
 
     static GET(url, callback) {
         this.call(url, "GET", null, "text/plain", callback);
@@ -25,7 +27,7 @@ class Ajax {
             }
         };
 
-        xmlhttp.open(method, url, true);
+        xmlhttp.open(method, 'http://127.0.0.1:3119' + url, true);
         xmlhttp.setRequestHeader("Content-type", contenttype + "; charset=utf-8");
         xmlhttp.send(JSON.stringify(body));
     }

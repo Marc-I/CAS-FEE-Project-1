@@ -167,7 +167,6 @@ class vDom {
      * updates an existing element (add, remove, update)
      */
     static _updateElement(parentElement, newNode, oldNode, index = 0) {
-
         if (!oldNode) { // if there is no old element, just add a new one
             parentElement.appendChild(vDom._createElement(newNode));
 
@@ -181,13 +180,14 @@ class vDom {
             parentElement.replaceChild(vDom._createElement(newNode), parentElement.childNodes[index]);
 
         } else if (newNode.type) { // if the new node is an element, update all children
-            vDom._updateProps(parentElement.childNodes[index], newNode.props, oldNode.props);
+            vDom._updateProps(parentElement.children[index], newNode.props, oldNode.props);
 
             const newLength = newNode.children.length;
             const oldLength = oldNode.children.length;
 
+            //debugger;
             for (let i = 0; i < newLength || i < oldLength; i++) {
-                vDom._updateElement(parentElement.childNodes[index], newNode.children[i], oldNode.children[i], i);
+                vDom._updateElement(parentElement.children[index], newNode.children[i], oldNode.children[i], i);
             }
         }
     }
@@ -206,5 +206,17 @@ class vDom {
         this._updateElement(document.getElementById('body'), NewVDom, vDom.currentVDom);
         // clone the new dom node
         vDom.currentVDom = JSON.parse(JSON.stringify(NewVDom));
+    }
+
+    /*
+     * updates a part of the dom
+     */
+    static Render(elementId, nodes) {
+        if (!vDom.currentNodes) vDom.currentNodes = {};
+        if (!vDom.currentNodes[elementId]) vDom.currentNodes[elementId] = null;
+
+        this._updateElement(document.getElementById(elementId), nodes, vDom.currentNodes[elementId]);
+        // clone the new dom node
+        vDom.currentNodes[elementId] = JSON.parse(JSON.stringify(nodes));
     }
 }

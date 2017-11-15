@@ -66,7 +66,7 @@ exports.putNote = (req, res, io) => {
 exports.deleteNote = (req, res, io) => {
     db.remove({_id: req.params.toDoId}, {}, (err, numRemoved) => {
         io.emit('delete', req.params.toDoId);
-        res.end(numRemoved + " was a DELETE");
+        res.end("deleted");
     });
 };
 

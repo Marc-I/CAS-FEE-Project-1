@@ -82,8 +82,8 @@ function createEditForm(entry = {}) {
         ]),
     ]);
 }
-
-let socket = new Socket();
+/*
+let socket = new SocketService();
 
 let main = vDom.CN('main', {className: 'cell-grow'}, []);
 let entries = [];
@@ -102,7 +102,7 @@ function LoadEntries(sorting, filtering) {
         (filterString ? 'filter=' + filterString : null)
     ].filter(e => e !== null).join('&');
 
-    Ajax.GET('http://127.0.0.1:3119/api/todo' + (querystring ? '?' + querystring : ''), data => {
+    AjaxService.GET('/api/todo' + (querystring ? '?' + querystring : ''), data => {
         entries = JSON.parse(data).map(e => new Entry(e));
         main.children = entries.map(e => e.GetNode());
         RenderUI();
@@ -138,5 +138,8 @@ LoadEntries();
 RenderUI();
 
 function RenderUI() {
-    vDom.Update(vdomTree);
+    //vDom.Update(vdomTree);
 }
+*/
+
+new EntryController();

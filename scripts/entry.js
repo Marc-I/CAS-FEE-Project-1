@@ -23,7 +23,7 @@ class Entry {
     }
 
     Create(editform) {
-        Ajax.POST('http://127.0.0.1:3119/api/todo', {
+        AjaxService.POST('/api/todo', {
             finished: this.finished || null,
             created: new Date().toISOString(),
             dueto: this.dueto || "",
@@ -41,7 +41,7 @@ class Entry {
     }
 
     Update(editform) {
-        Ajax.PUT('http://127.0.0.1:3119/api/todo/' + this.id, {
+        AjaxService.PUT('/api/todo/' + this.id, {
             _id: this.id,
             finished: this.finished || null,
             created: this.created || null,
@@ -71,7 +71,7 @@ class Entry {
     }
 
     Finish() {
-        Ajax.PUT('http://127.0.0.1:3119/api/todo/' + this.id, {
+        AjaxService.PUT('/api/todo/' + this.id, {
             _id: this.id,
             finished: this.finished === null ? new Date() : null,
             created: this.created,
@@ -93,7 +93,7 @@ class Entry {
     }
 
     Delete() {
-        Ajax.DELETE('http://127.0.0.1:3119/api/todo/' + this.id, (data) => {
+        AjaxService.DELETE('/api/todo/' + this.id, (data) => {
             if (data === '1 was a DELETE') {
                 entries = entries.filter(e => e.id !== this.id);
                 main.children = entries.map(e => e.GetNode());

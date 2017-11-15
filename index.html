@@ -13,24 +13,52 @@
 </head>
 <body>
 
-<div id="body"></div>
-
-
-<script src="scripts/vdom.js"></script>
-<script src="scripts/ajax.js"></script>
+<div id="body">
+    <div class="wrapper grid-column">
+        <header class="grid">
+            <div class="cell"><label class="button" for="formtoggler">create new note</label></div>
+            <div class="cell-shrink"><span class="select"><select name="theme" id="themeselector"><option value="1"
+                                                                                                          selected="">White-Black-Style</option><option
+                    value="2">Black-Orange-Style</option><option value="3">White-Blue-Style</option></select></span>
+            </div>
+        </header>
+        <nav class="grid">
+            <div class="cell">
+                <button>By finish Date</button>
+                <button>By created Date</button>
+                <button>By Importance</button>
+            </div>
+            <div class="cell-srink">
+                <button>Show finished</button>
+            </div>
+        </nav>
+        <main class="cell-grow" id="entries">
+        </main>
+        <footer>
+            <button type="button" class="round">+</button>
+        </footer>
+        <section id="editform"></section>
+    </div>
+</div>
 
 <script src="scripts/theme.js"></script>
-<script src="scripts/entry.js"></script>
 <script src="scripts/editform.js"></script>
 
+<script src="scripts/vdom.js"></script>
+
 <script src="scripts/socket.io.js"></script>
-<script src="scripts/socket.js"></script>
+<script src="scripts/SocketService.js"></script>
+<script src="scripts/AjaxService.js"></script>
 
-<script src="scripts/basedom.js"></script>
+<script src="scripts/EntryModel.js"></script>
+<script src="scripts/EntryView.js"></script>
+<script src="scripts/EntryController.js"></script>
+<script src="scripts/EntryService.js"></script>
+
+<script src="scripts/BaseController.js"></script>
 
 
-
-<script>console.log('rendered in ' + (Date.now()-start) + ' msecs');</script>
+<script>console.log('rendered in ' + (Date.now() - start) + ' msecs');</script>
 
 </body>
 </html>

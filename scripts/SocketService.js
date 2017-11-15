@@ -1,24 +1,27 @@
 'use strict';
 
-class Socket {
-    constructor(){
-        this.socket = io();//'http://127.0.0.1:3119/', {path: '/socket'});
+class SocketService {
+    constructor() {
+        this.socket = io();
 
         this.socket.on('msg', (data) => {
             console.log(data);
         });
+
         this.socket.on('add', (data) => {
-            console.log('add', data);
+            BaseController.EntryController.AddResponse(new EntryModel(data));
         });
+
         this.socket.on('update', (data) => {
-            console.log('update', data);
+            BaseController.EntryController.UpdateResponse(new EntryModel(data));
         });
+
         this.socket.on('delete', (data) => {
-            console.log('delete', data);
+            BaseController.EntryController.DeleteResponse(data);
         });
     }
 
-    send (data) {
+    send(data) {
         this.socket.emit('send', data);
     }
 }
