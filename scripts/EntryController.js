@@ -12,7 +12,11 @@ class EntryController {
             }
         };
 
-        EntryService.GetAll(null, null, (data) => {
+        this.Get(null, null);
+    }
+
+    Get(sorting, filtering) {
+        EntryService.GetAll(sorting, filtering, (data) => {
             this.entries = data;
             this.view.RenderEntries(this.entries);
         });

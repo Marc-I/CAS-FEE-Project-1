@@ -170,7 +170,7 @@ class vDom {
         if (!oldNode) { // if there is no old element, just add a new one
             parentElement.appendChild(vDom._createElement(newNode));
 
-        } else if (!newNode) { // if there is no new element, just remove the old one
+        } else if (!newNode && newNode !== '') { // if there is no new element, just remove the old one
             parentElement.removeChild(parentElement.childNodes[index]);
 
         } else if (vDom._changed(newNode, oldNode)) { // change if both are existing and not equal
@@ -179,15 +179,15 @@ class vDom {
 
             parentElement.replaceChild(vDom._createElement(newNode), parentElement.childNodes[index]);
 
-        } else if (newNode.type) { // if the new node is an element, update all children
-            vDom._updateProps(parentElement.children[index], newNode.props, oldNode.props);
+        } else if (newNode.type && parentElement) { // if the new node is an element, update all children
+            vDom._updateProps(parentElement.childNodes[index], newNode.props, oldNode.props);
 
             const newLength = newNode.children.length;
             const oldLength = oldNode.children.length;
 
             //debugger;
             for (let i = 0; i < newLength || i < oldLength; i++) {
-                vDom._updateElement(parentElement.children[index], newNode.children[i], oldNode.children[i], i);
+                vDom._updateElement(parentElement.childNodes[index], newNode.children[i], oldNode.children[i], i);
             }
         }
     }
