@@ -1,6 +1,6 @@
-#CAS FEE Project 1
+# CAS FEE Project 1
 
-##Installation
+## Installation
 1. clone repo
 1. run `npm install` to install dependencies
 1. run `gulp styles` to create css-files
