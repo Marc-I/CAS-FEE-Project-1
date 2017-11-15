@@ -17,9 +17,7 @@
     <div class="wrapper grid-column">
         <header class="grid">
             <div class="cell"><label class="button" for="formtoggler">create new note</label></div>
-            <div class="cell-shrink"><span class="select"><select name="theme" id="themeselector"><option value="1"
-                                                                                                          selected="">White-Black-Style</option><option
-                    value="2">Black-Orange-Style</option><option value="3">White-Blue-Style</option></select></span>
+            <div class="cell-shrink" id="themeselection">
             </div>
         </header>
         <nav class="grid">
@@ -41,10 +39,10 @@
     </div>
 </div>
 
-<script src="scripts/theme.js"></script>
-<script src="scripts/editform.js"></script>
-
 <script src="scripts/vdom.js"></script>
+
+<script src="scripts/ThemeView.js"></script>
+<script src="scripts/editform.js"></script>
 
 <script src="scripts/socket.io.js"></script>
 <script src="scripts/SocketService.js"></script>

@@ -89,7 +89,7 @@ let main = vDom.CN('main', {className: 'cell-grow'}, []);
 let entries = [];
 let editFormNode = vDom.CN('section', {id: 'editform'}, []);
 let editForm = new EditForm();
-let themeSelector = new ThemeSelector();
+let themeSelector = new ThemeView();
 
 let sortString = 'dueto';
 let filterString = null;

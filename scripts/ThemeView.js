@@ -1,10 +1,11 @@
 'use strict';
 
-class ThemeSelector {
+class ThemeView {
     constructor() {
-        this.theme = '1';
+        this.theme = '3';
         this.selector = null;
         this._load();
+        this.Render();
     }
 
     _load() {
@@ -52,6 +53,10 @@ class ThemeSelector {
         this._save();
     }
 
+    Render() {
+        vDom.Render('themeselection', this.GetNode());
+    }
+
     GetNode() {
         return vDom.CN('span', {className: 'select'}, [
             vDom.CN('select', {name: 'theme', id: 'themeselector', onChange: () => this.Change()}, [
@@ -62,3 +67,5 @@ class ThemeSelector {
         ]);
     }
 }
+
+new ThemeView();
