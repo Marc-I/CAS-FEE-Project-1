@@ -16,7 +16,7 @@
 <div id="body">
     <div class="wrapper grid-column">
         <header class="grid">
-            <div class="cell"><label class="button" for="formtoggler">create new note</label></div>
+            <div class="cell" id="addButton1"></div>
             <div class="cell-shrink" id="themeselection">
             </div>
         </header>
@@ -32,9 +32,7 @@
         </nav>
         <main class="cell-grow" id="entries">
         </main>
-        <footer>
-            <button type="button" class="round">+</button>
-        </footer>
+        <footer id="addButton2"></footer>
         <section id="editform"></section>
     </div>
 </div>
@@ -42,7 +40,7 @@
 <script src="scripts/vdom.js"></script>
 
 <script src="scripts/ThemeView.js"></script>
-<script src="scripts/editform.js"></script>
+<script src="scripts/EditFormView.js"></script>
 
 <script src="scripts/socket.io.js"></script>
 <script src="scripts/SocketService.js"></script>

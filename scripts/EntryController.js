@@ -19,9 +19,7 @@ class EntryController {
     }
 
     Add(entry) {
-        EntryService.Create(entry, (data) => {
-            this.AddResponse(data);
-        });
+        EntryService.Create(entry, () => {});
     }
 
     AddResponse(entry) {
@@ -32,7 +30,7 @@ class EntryController {
     }
 
     Edit(entry) {
-        console.log('open edit form');
+        EditFormView.Render(entry);
     }
 
     Update(entry) {

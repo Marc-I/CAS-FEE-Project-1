@@ -1,28 +1,41 @@
 'use strict';
 
-class EditForm {
-    constructor(entry) {
-        this.Entry = entry instanceof Entry ? entry : new Entry();
+class EditFormView {
+    constructor () {
+        vDom.Render('addButton1', EditFormView.GetAddButton1());
+        vDom.Render('addButton2', EditFormView.GetAddButton2());
     }
 
-    Open(entry) {
-        this.Entry = entry instanceof Entry ? entry : new Entry();
-        editFormNode.children = [this.GetNode()];
-        RenderUI();
+    static GetAddButton1() {
+        return vDom.CN('button', {type: 'button', onClick: () => this.Render(new EntryModel()), forceUpdate: true}, ['create node']);
     }
 
-    Close() {
-        this.Entry = null;
-        editFormNode.children = [];
-        RenderUI();
+    static GetAddButton2() {
+        return vDom.CN('button', {type: 'button', className: 'round', onClick: () => this.Render(new EntryModel()), forceUpdate: true}, ['+']);
     }
 
-    GetNode() {
+    static Save(entry) {
+        if (entry.id)
+            BaseController.EntryController.Update(entry);
+        else
+            BaseController.EntryController.Add(entry);
+        this.Render();
+    }
+
+    static Close() {
+        this.Render();
+    }
+
+    static Render(entry) {
+        vDom.Render('editform', entry ? this.GetNode(entry) : vDom.CN('span', {}, []));
+    }
+
+    static GetNode(entry) {
         return vDom.CN('div', {id: 'hdiv'}, [
             vDom.CN('form', {
                 action: '#', method: 'post', onSubmit: (e) => {
                     e.preventDefault();
-                    this.Entry.Save(this);
+                    entry.Save(this);
                     return false;
                 },
                 forceUpdate: true
@@ -33,10 +46,10 @@ class EditForm {
                         vDom.CN('input', {
                             type: 'text',
                             name: 'title',
-                            value: this.Entry.title || '',
+                            value: entry.title || '',
                             required: true,
                             onChange: (event) => {
-                                this.Entry.title = event.target.value;
+                                entry.title = event.target.value;
                             },
                             forceUpdate: true
                         }, []),
@@ -47,13 +60,13 @@ class EditForm {
                     vDom.CN('div', {className: 'material inputgroup'}, [
                         vDom.CN('textarea', {
                             name: 'description',
-                            value: this.Entry.description || '',
+                            value: entry.description || '',
                             required: true,
                             onChange: (event) => {
-                                this.Entry.description = event.target.value;
+                                entry.description = event.target.value;
                             },
                             forceUpdate: true
-                        }, [this.Entry.description || '']),
+                        }, [entry.description || '']),
                         vDom.CN('span', {className: 'highlight'}, []),
                         vDom.CN('span', {className: 'bar'}, []),
                         vDom.CN('label', {}, ['Beschreibung']),
@@ -78,9 +91,9 @@ class EditForm {
                             name: 'rating',
                             value: '1',
                             id: 'rating_1',
-                            checked: this.Entry.rating && this.Entry.rating.toString() === '1',
+                            checked: entry.rating && (entry.rating.toString() === '1'),
                             onClick: () => {
-                                this.Entry.rating = 1;
+                                entry.rating = 1;
                             },
                             forceUpdate: true
                         }, ['']),
@@ -90,9 +103,9 @@ class EditForm {
                             name: 'rating',
                             value: '2',
                             id: 'rating_2',
-                            checked: this.Entry.rating && this.Entry.rating.toString() === '2',
+                            checked: entry.rating && (entry.rating.toString() === '2'),
                             onClick: () => {
-                                this.Entry.rating = 2;
+                                entry.rating = 2;
                             },
                             forceUpdate: true
                         }, ['']),
@@ -102,9 +115,9 @@ class EditForm {
                             name: 'rating',
                             value: '3',
                             id: 'rating_3',
-                            checked: this.Entry.rating && this.Entry.rating.toString() === '3',
+                            checked: entry.rating && (entry.rating.toString() === '3'),
                             onClick: () => {
-                                this.Entry.rating = 3;
+                                entry.rating = 3;
                             },
                             forceUpdate: true
                         }, ['']),
@@ -114,9 +127,9 @@ class EditForm {
                             name: 'rating',
                             value: '4',
                             id: 'rating_4',
-                            checked: this.Entry.rating && this.Entry.rating.toString() === '4',
+                            checked: entry.rating && (entry.rating.toString() === '4'),
                             onClick: () => {
-                                this.Entry.rating = 4;
+                                entry.rating = 4;
                             },
                             forceUpdate: true
                         }, ['']),
@@ -126,9 +139,9 @@ class EditForm {
                             name: 'rating',
                             value: '5',
                             id: 'rating_5',
-                            checked: this.Entry.rating && this.Entry.rating.toString() === '5',
+                            checked: entry.rating && (entry.rating.toString() === '5'),
                             onClick: () => {
-                                this.Entry.rating = 5;
+                                entry.rating = 5;
                             },
                             forceUpdate: true
                         }, ['']),
@@ -137,10 +150,10 @@ class EditForm {
                         vDom.CN('input', {
                             type: 'date',
                             name: 'dueto',
-                            value: this.Entry.dueto,
+                            value: entry.dueto,
                             required: true,
                             onChange: (event) => {
-                                this.Entry.dueto = event.target.value;
+                                entry.dueto = event.target.value;
                             },
                             forceUpdate: true
                         }, []),
@@ -148,10 +161,16 @@ class EditForm {
                         vDom.CN('span', {className: 'bar'}, []),
                         vDom.CN('label', {}, ['Erledigen bis:']),
                     ]),
-                    vDom.CN('button', {type: 'button', onClick: () => this.Entry.Save(this), forceUpdate: true}, ['speichern']),
+                    vDom.CN('button', {
+                        type: 'button',
+                        onClick: () => this.Save(entry),
+                        forceUpdate: true
+                    }, ['speichern']),
                     vDom.CN('button', {type: 'button', onClick: () => this.Close(), forceUpdate: true}, ['abbrechen']),
                 ]),
             ]),
         ]);
     }
 }
+
+new EditFormView();

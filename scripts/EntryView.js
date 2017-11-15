@@ -32,7 +32,7 @@ class EntryView {
         return vDom.CN('section', {id: entry.id}, [
             vDom.CN('input', {type: 'checkbox', id: 'entry_' + entry.id, checked: entry.finished !== null}, []),
             vDom.CN('label', {className: 'button round', onClick: () => this.controller.Finish(entry), forceUpdate: true}, ['✔']),
-            vDom.CN('div', {className: 'duetodate'}, [duetodate]),
+            vDom.CN('div', {className: 'duetodate', title: new Date(entry.dueto).toLocaleDateString()}, [duetodate]),
             vDom.CN('div', {'data-rating': entry.rating}, [
                 vDom.CN('span', {}, ['★']),
                 vDom.CN('span', {}, ['★']),

@@ -88,7 +88,7 @@ let socket = new SocketService();
 let main = vDom.CN('main', {className: 'cell-grow'}, []);
 let entries = [];
 let editFormNode = vDom.CN('section', {id: 'editform'}, []);
-let editForm = new EditForm();
+let editForm = new EditFormView();
 let themeSelector = new ThemeView();
 
 let sortString = 'dueto';
