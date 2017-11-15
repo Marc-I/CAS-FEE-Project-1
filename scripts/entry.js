@@ -41,7 +41,7 @@ class Entry {
     }
 
     Update(editform) {
-        Ajax.PUT('http://127.0.0.1:3119/api/todo', {
+        Ajax.PUT('http://127.0.0.1:3119/api/todo/' + this.id, {
             _id: this.id,
             finished: this.finished || null,
             created: this.created || null,
@@ -71,7 +71,7 @@ class Entry {
     }
 
     Finish() {
-        Ajax.PUT('http://127.0.0.1:3119/api/todo', {
+        Ajax.PUT('http://127.0.0.1:3119/api/todo/' + this.id, {
             _id: this.id,
             finished: this.finished === null ? new Date() : null,
             created: this.created,

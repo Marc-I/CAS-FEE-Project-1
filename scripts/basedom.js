@@ -83,6 +83,8 @@ function createEditForm(entry = {}) {
     ]);
 }
 
+let socket = new Socket();
+
 let main = vDom.CN('main', {className: 'cell-grow'}, []);
 let entries = [];
 let editFormNode = vDom.CN('section', {id: 'editform'}, []);
@@ -132,37 +134,6 @@ let vdomTree = vDom.CN('div', {className: 'wrapper grid-column'}, [
     editFormNode,
 ]);
 
-RenderUI();
-
-/*
-let entries = [
-    new Entry({id: '213', dueto: 'heute', rating: 5, title: 'neu', description: 'Hallo Welt'}),
-    new Entry({
-        id: '324123',
-        finished: false,
-        dueto: 'Übermorgen',
-        rating: 3,
-        title: 'Diese Seite fertig machen',
-        description: 'Es muss getan werden.\n- HTML\n- CSS\n- JS',
-    }),
-    new Entry({
-        id: '34523',
-        finished: true,
-        dueto: 'Nächsten Mittwoch',
-        rating: 4,
-        title: 'CAS FEE Selbststudium / Projekt Aufgabe erledigen',
-        description: 'HTML für die note App erstellen\nCSS erstellen für die note App.',
-    }),
-    new Entry({
-        id: '543353',
-        finished: false,
-        dueto: 'Heute',
-        rating: 1,
-        title: 'Einkaufen',
-        description: 'Butter\nEier\nBrot',
-    }),
-];
-*/
 LoadEntries();
 RenderUI();
 
