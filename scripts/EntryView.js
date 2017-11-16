@@ -7,6 +7,11 @@ class EntryView {
         this.entrynodes = [];
     }
 
+    UpdateRating(entry, rating) {
+        entry.rating = rating;
+        this.controller.Update(entry);
+    }
+
     RenderEntries(entries) {
         this.entrynodes = entries.map(e => this.createNode(e));
         vDom.Render('entries',vDom.CN('div', {className: 'cell-grow'}, this.entrynodes));
@@ -34,11 +39,11 @@ class EntryView {
             vDom.CN('label', {className: 'button round', onClick: () => this.controller.Finish(entry), forceUpdate: true}, ['✔']),
             vDom.CN('div', {className: 'duetodate', title: new Date(entry.dueto).toLocaleDateString()}, [duetodate]),
             vDom.CN('div', {'data-rating': entry.rating}, [
-                vDom.CN('span', {}, ['★']),
-                vDom.CN('span', {}, ['★']),
-                vDom.CN('span', {}, ['★']),
-                vDom.CN('span', {}, ['★']),
-                vDom.CN('span', {}, ['★']),
+                vDom.CN('span', {onClick: () => { this.UpdateRating(entry, 1); }, forceUpdate: true}, ['★']),
+                vDom.CN('span', {onClick: () => { this.UpdateRating(entry, 2); }, forceUpdate: true}, ['★']),
+                vDom.CN('span', {onClick: () => { this.UpdateRating(entry, 3); }, forceUpdate: true}, ['★']),
+                vDom.CN('span', {onClick: () => { this.UpdateRating(entry, 4); }, forceUpdate: true}, ['★']),
+                vDom.CN('span', {onClick: () => { this.UpdateRating(entry, 5); }, forceUpdate: true}, ['★']),
             ]),
             vDom.CN('details', {}, [
                 vDom.CN('summary', {}, [entry.title]),
