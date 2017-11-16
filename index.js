@@ -27,6 +27,7 @@ io.on('connection', (socket) => {
 app.get('/', express.static(__dirname));
 app.route('/css/:fileName').get(function (req, res) {res.sendFile(__dirname + '/css/' + req.params.fileName); });
 app.route('/scripts/:fileName').get(function (req, res) {res.sendFile(__dirname + '/scripts/' + req.params.fileName); });
+app.route('/favicons/:fileName').get(function (req, res) {res.sendFile(__dirname + '/favicons/' + req.params.fileName); });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
