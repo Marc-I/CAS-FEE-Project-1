@@ -23,12 +23,17 @@ class EntryController {
     }
 
     Add(entry) {
-        EntryService.Create(entry, () => {});
+        EntryService.Create(entry, (data) => {
+            this.AddOrUpdateResponse(data);
+        });
     }
 
-    AddResponse(entry) {
+    AddOrUpdateResponse(entry) {
         if (entry) {
-            this.entries.push(entry);
+            if (this.entries.findIndex(e => e.id === entry.id) >= 0)
+                this.entries.splice(this.entries.findIndex(e => e.id === entry.id), 1, entry);
+            else
+                this.entries.push(entry);
             this.view.RenderEntries(this.entries);
         }
     }
@@ -39,20 +44,13 @@ class EntryController {
 
     Update(entry) {
         EntryService.Update(entry, (data) => {
-            this.UpdateResponse(data);
+            this.AddOrUpdateResponse(data);
         });
-    }
-
-    UpdateResponse(entry) {
-        if (entry) {
-            this.entries.splice(this.entries.findIndex(e => e.id === entry.id), 1, entry);
-            this.view.RenderEntries(this.entries);
-        }
     }
 
     Finish(entry) {
         EntryService.Finish(entry, (data) => {
-            this.UpdateResponse(data);
+            this.AddOrUpdateResponse(data);
         });
     }
 

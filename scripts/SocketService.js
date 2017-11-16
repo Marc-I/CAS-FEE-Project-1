@@ -9,11 +9,11 @@ class SocketService {
         });
 
         this.socket.on('add', (data) => {
-            BaseController.EntryController.AddResponse(new EntryModel(data));
+            BaseController.EntryController.AddOrUpdateResponse(new EntryModel(data));
         });
 
         this.socket.on('update', (data) => {
-            BaseController.EntryController.UpdateResponse(new EntryModel(data));
+            BaseController.EntryController.AddOrUpdateResponse(new EntryModel(data));
         });
 
         this.socket.on('delete', (data) => {

@@ -31,11 +31,12 @@ class EditFormView {
     }
 
     static GetNode(entry) {
+        if(!entry.rating) entry.rating = 1;
         return vDom.CN('div', {id: 'hdiv'}, [
             vDom.CN('form', {
                 action: '#', method: 'post', onSubmit: (e) => {
                     e.preventDefault();
-                    entry.Save(this);
+                    this.Save(entry);
                     return false;
                 },
                 forceUpdate: true
@@ -91,7 +92,7 @@ class EditFormView {
                             name: 'rating',
                             value: '1',
                             id: 'rating_1',
-                            checked: (!!entry.rating && entry.rating.toString() === '1') || !entry.rating,
+                            checked: !!entry.rating && entry.rating.toString() === '1',
                             onClick: () => {
                                 entry.rating = 1;
                             },
@@ -103,7 +104,7 @@ class EditFormView {
                             name: 'rating',
                             value: '2',
                             id: 'rating_2',
-                            checked: !!entry.rating && (entry.rating.toString() === '2'),
+                            checked: !!entry.rating && entry.rating.toString() === '2',
                             onClick: () => {
                                 entry.rating = 2;
                             },
@@ -115,7 +116,7 @@ class EditFormView {
                             name: 'rating',
                             value: '3',
                             id: 'rating_3',
-                            checked: !!entry.rating && (entry.rating.toString() === '3'),
+                            checked: !!entry.rating && entry.rating.toString() === '3',
                             onClick: () => {
                                 entry.rating = 3;
                             },
@@ -127,7 +128,7 @@ class EditFormView {
                             name: 'rating',
                             value: '4',
                             id: 'rating_4',
-                            checked: !!entry.rating && (entry.rating.toString() === '4'),
+                            checked: !!entry.rating && entry.rating.toString() === '4',
                             onClick: () => {
                                 entry.rating = 4;
                             },
@@ -139,7 +140,7 @@ class EditFormView {
                             name: 'rating',
                             value: '5',
                             id: 'rating_5',
-                            checked: !!entry.rating && (entry.rating.toString() === '5'),
+                            checked: !!entry.rating && entry.rating.toString() === '5',
                             onClick: () => {
                                 entry.rating = 5;
                             },
